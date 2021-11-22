@@ -3,17 +3,17 @@ import sys
 from PIL import Image, ImageDraw
 from random import randrange
 
-from PyQt5 import uic
+from UI import Ui_MainWindow
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtWidgets import QApplication, QMainWindow
 
 
 
-class Window(QMainWindow):
+class Window(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super().__init__()
-        uic.loadUi('UI.ui', self)
-
+        self.setupUi(self)
+        
         self.initUI()
 
     def initUI(self):
@@ -40,7 +40,7 @@ class Window(QMainWindow):
         r = randrange(10, 100)
         par = ((x0 - r, y0 - r), (x0 + r, y0 + r))
 
-        color = (255, 204, 0)
+        color = (randrange(100, 255), randrange(100, 255), randrange(100, 255))
         
         par = ((x0 - r, y0 - r), (x0 + r, y0 + r))
         
